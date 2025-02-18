@@ -1,0 +1,238 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end" [hidden]="!showEditProfile ">
+      <ion-button class="action-btn" (click)="showProfile()" color="light"  fill="outline">{{ 'cancel' | translate }}</ion-button>
+    </ion-buttons>
+    <ion-title>Profile</ion-title>
+    <ion-buttons slot="start">
+      <ion-button [routerLink]="['/home']"  >
+        <ion-icon color="light" name="arrow-back-sharp"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end" [hidden]="showEditProfile">
+      <ion-button class="action-btn"  color="light" fill="outline"  (click)="showEdit()">
+        <ion-icon slot="start" name="pencil-sharp"></ion-icon> {{ 'edit_profile' | translate }}
+      </ion-button>
+      <ion-icon name="ellipsis-vertical-sharp" color="light" class="ellipsis-icon" (click)="openModal()"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div *ngIf="data" [hidden]="showEditProfile">
+    <ion-row class="heading-info">
+      <ion-col size="12"  class="home-header-img" *ngIf="!image">
+        <img src="../assets/avatar2.png" /> 
+      </ion-col>
+      <ion-col size="12"  class="home-header-img" *ngIf="image">
+        <img src="{{profile_image}}" /> 
+      </ion-col>
+    </ion-row>
+
+    <div class="ion-padding ion-margin-start details-card">
+    <p class="header">Name</p>
+    <p class="value">{{name|| 'N/A'}}</p>
+   
+    <p class="header">Mobile Number</p>
+    <p class="value">{{mobile_no|| 'N/A'}}</p>
+   
+    <p class="header">Date of Birth</p>
+    <p class="value">{{date_of_birth|date:'dd MMM, y'}}</p>
+   
+    <p class="header">Address Line 1</p>
+    <p class="value">{{address_1 || 'N/A'}}</p>
+   
+    <p class="header">Address Line 2</p>
+    <p class="value">{{address_2|| 'N/A'}}</p>
+   
+    <p class="header">Address Line 3</p>
+    <p class="value">{{address_3|| 'N/A'}}</p>
+   
+    <p class="header">State</p>
+    <p class="value">{{stateName|| 'N/A'}}</p>
+   
+    <p class="header">City</p>
+    <p class="value">{{cityName|| 'N/A'}}</p>
+   
+    <p class="header">Pincode</p>
+    <p class="value">{{pincode|| 'N/A'}}</p>
+
+    <!-- <p class="header">GST No.</p>
+    <p class="value">{{gst_no|| 'N/A'}}</p> -->
+
+   <br>
+   <br>
+  </div>
+  </div>
+  <div *ngIf="!data" [hidden]="showEditProfile">
+    <ion-row class="heading-info">
+      <ion-col size="12"  class="home-header-img" *ngIf="!image ">
+        <img src="../assets/avatar2.png" /> 
+      </ion-col>
+      <ion-col size="12"  class="home-header-img" *ngIf="image">
+        <img src="{{profile_image}}" />
+      </ion-col>
+    </ion-row>
+
+    <div class="ion-padding ion-margin-start details-card">
+      
+    <p class="header"><ion-skeleton-text animated style="width: 20%;"></ion-skeleton-text></p>
+    <p class="value"><ion-skeleton-text animated style="width: 40%;"></ion-skeleton-text></p>
+   
+    <p class="header"><ion-skeleton-text animated style="width: 20%;"></ion-skeleton-text></p>
+    <p class="value"><ion-skeleton-text animated style="width: 30%;"></ion-skeleton-text></p>
+   
+    <p class="header"><ion-skeleton-text animated style="width: 20%;"></ion-skeleton-text></p>
+    <p class="value"><ion-skeleton-text animated style="width: 20%;"></ion-skeleton-text></p>
+   
+    <p class="header"><ion-skeleton-text animated style="width: 20%;"></ion-skeleton-text></p>
+    <p class="value"><ion-skeleton-text animated style="width: 60%;"></ion-skeleton-text></p>
+   
+    <p class="header"><ion-skeleton-text animated style="width: 20%;"></ion-skeleton-text></p>
+    <p class="value"><ion-skeleton-text animated style="width: 60%;"></ion-skeleton-text></p>
+   
+    <p class="header"><ion-skeleton-text animated style="width: 20%;"></ion-skeleton-text></p>
+    <p class="value"><ion-skeleton-text animated style="width: 60%;"></ion-skeleton-text></p>
+   
+    <p class="header"><ion-skeleton-text animated style="width: 20%;"></ion-skeleton-text></p>
+    <p class="value"><ion-skeleton-text animated style="width: 40%;"></ion-skeleton-text></p>
+   
+    <p class="header"><ion-skeleton-text animated style="width: 20%;"></ion-skeleton-text></p>
+    <p class="value"><ion-skeleton-text animated style="width: 40%;"></ion-skeleton-text></p>
+   
+    <p class="header"><ion-skeleton-text animated style="width: 20%;"></ion-skeleton-text></p>
+    <p class="value"><ion-skeleton-text animated style="width: 40%;"></ion-skeleton-text></p>
+
+    <p class="header"><ion-skeleton-text animated style="width: 20%;"></ion-skeleton-text></p>
+    <p class="value"><ion-skeleton-text animated style="width: 40%;"></ion-skeleton-text></p>
+
+   <br>
+   <br>
+   <br>
+
+  </div>
+
+  </div>
+  <ion-grid [hidden]="!showEditProfile  " class="ion-margin">
+    <br>
+
+    <form *ngIf="electricianFormField" (ngSubmit)="profileForm()">
+      <ion-row class="ion-text-center">
+        <ion-col size="12"  class="home-header-img" *ngIf="!image && !imageClicked">
+          <img src="../assets/avatar2.png" /> 
+        </ion-col>
+        <ion-col size="12"  class="home-header-img" *ngIf="image">
+          <img src="{{profile_image}}" *ngIf="!base64Image" width="215" /> 
+        </ion-col>
+        <ion-col size="12"  class="home-header-img" *ngIf="imageClicked">
+          <img src="{{base64Image}}" *ngIf="base64Image" alt="Avatar" width="215" />
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-text-center">
+        <ion-col size="6">
+          <ion-button  color="secondary" (click)="takePhoto()">Take Picture</ion-button>
+        </ion-col>
+        <ion-col size="6">
+          <ion-button color="secondary" (click)="getImage()">Select Image</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-item class="ion-margin-bottom">
+          <ion-label ><ion-icon slot="start" name="person"></ion-icon></ion-label>
+          <ion-input type="text" [(ngModel)]="electricianFormField.name" name="name" placeholder="{{ 'enter_name' | translate }}"></ion-input>
+        </ion-item>
+      </ion-row>
+      <ion-row>
+        <ion-item class="ion-margin-bottom" >
+          <ion-icon slot="start" name="calendar-sharp" style="margin-right: 10px;"></ion-icon>
+          <ion-datetime  displayFormat="DD-MM-YYYY"  placeholder="{{ 'date_of_birth' | translate}}" [(ngModel)]="electricianFormField.date_of_birth" name="date_of_birth" ></ion-datetime>
+          <!-- <ion-input readonly type="text" [(ngModel)]="electricianFormField.date_of_birth" name="date_of_birth" ></ion-input> -->
+        </ion-item>
+      </ion-row>
+
+      <ion-row>
+        <ion-item class="ion-margin-bottom">
+          <ion-label ><ion-icon name="list"></ion-icon></ion-label>
+            <ionic-selectable
+                name="state"
+                
+                placeholder="{{ 'select_state' | translate }}"
+                searchPlaceholder="{{ 'search_state' | translate }}"
+                [(ngModel)]="electricianFormField.state"
+                [items]="states"
+                itemValueField="id"
+                itemTextField="name"
+                [canSearch]="true"
+                (onChange)="changeState($event)">
+            </ionic-selectable>
+        </ion-item>
+      </ion-row>
+      <ion-row>
+        <ion-item class="ion-margin-bottom">
+          <ion-label ><ion-icon name="list"></ion-icon></ion-label>
+            <ionic-selectable
+                #cityComponent
+                name="city"
+                placeholder="{{ 'select_city' | translate }}"
+                searchPlaceholder="{{ 'search_city' | translate }}"
+                [(ngModel)]="electricianFormField.city"
+                [items]="cities"
+                itemValueField="id"
+                itemTextField="name"
+                [canSearch]="true"
+              
+                >
+            </ionic-selectable>
+        </ion-item>
+      </ion-row>
+
+
+      <ion-row>
+        <ion-item class="ion-margin-bottom">
+          <ion-label ><ion-icon name="pencil-sharp"></ion-icon></ion-label>
+          <ion-input type="text" [(ngModel)]="electricianFormField.address_line_1" name="address_line_1" placeholder="{{ 'enter_address_line_1' | translate }}"></ion-input>
+        </ion-item>
+      </ion-row>
+   
+      <ion-row>
+        <ion-item class="ion-margin-bottom">
+          <ion-label ><ion-icon name="pencil-sharp"></ion-icon></ion-label>
+          <ion-input type="text" [(ngModel)]="electricianFormField.address_line_2" name="address_line_2" placeholder="{{ 'enter_address_line_2' | translate }}"></ion-input>
+        </ion-item>
+      </ion-row>
+
+      <ion-row>
+        <ion-item class="ion-margin-bottom">
+          <ion-label ><ion-icon name="pencil-sharp"></ion-icon></ion-label>
+          <ion-input type="text" [(ngModel)]="electricianFormField.address_line_3" name="address_line_3" placeholder="{{ 'enter_address_line_3' | translate }}"></ion-input>
+        </ion-item>
+      </ion-row>
+      <ion-row>
+        <ion-item class="ion-margin-bottom">
+          <ion-label ><ion-icon name="pencil-sharp"></ion-icon></ion-label>
+          <ion-input type="number" maxLength="6" [(ngModel)]="electricianFormField.pincode" name="pincode" placeholder="{{ 'enter_pincode' | translate }}"></ion-input>
+        </ion-item>
+      </ion-row>
+      <ion-row *ngIf="">
+        <ion-item class="ion-margin-bottom">
+          <ion-label ><ion-icon name="pencil-sharp"></ion-icon></ion-label>
+          <ion-input type="text"  [(ngModel)]="electricianFormField.gst_no" name="gst_no" placeholder="{{ 'enter_gst' | translate }}"></ion-input>
+        </ion-item>
+      </ion-row>
+
+      <ion-button type="submit" class="login-btn" color="secondary"  expand="block">
+        <ion-icon name="send" style="margin-right: 8px;"></ion-icon> {{ 'submit' | translate }}
+      </ion-button>
+      <br>
+      <br>
+      <br>
+      <!-- <ion-label style="color: darkgray;"> IFSC format e.g. SBIN0123456</ion-label> -->
+  
+
+  </form>
+</ion-grid>
+
+</ion-content>

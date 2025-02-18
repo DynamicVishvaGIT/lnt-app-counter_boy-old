@@ -1,0 +1,7 @@
+{
+  "name": "counterboy",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

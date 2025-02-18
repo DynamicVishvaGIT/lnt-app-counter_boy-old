@@ -1,0 +1,96 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Passbook</ion-title>
+    <ion-buttons slot="start">
+      <ion-button [routerLink]="['/home']"  >
+        <ion-icon color="light" name="arrow-back-sharp"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar color="light">
+    <ion-segment value="earned" (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="earned">
+        <ion-label>Point By Electrician</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="redeem">
+        <ion-label>Point Redeem</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div *ngIf="selectedSegment == 'earned'">
+    <div *ngIf="passbook_earn">
+      <ion-card mode="ios" *ngFor="let items of passbook_earn" >
+         <ion-row class="points-row">
+            <ion-col size="6">
+               <p class="header">Name</p>
+               <p class="value">{{items.name |titlecase}}</p>
+            </ion-col>
+            <ion-col size="6">
+              <p class="header">Mobile Number</p>
+              <p class="value">{{items.mobile_no}}</p>
+           </ion-col>
+         </ion-row>
+         <ion-row class="points-row">
+            <ion-col size="6">
+               <p class="header">Points</p>
+               <p class="value">{{items.point}}</p>
+            </ion-col>
+            <ion-col size="6">
+              <p class="header">Created Date</p>
+              <p class="value">{{items.dates |titlecase}}</p>
+           </ion-col>
+         </ion-row>
+      </ion-card>
+    </div>
+    <div *ngIf="!dataPresent" class="electrician-card">
+        <p class="ion-text-center"><b>No passbook</b> </p>
+    </div>
+  </div>
+
+  <div *ngIf="selectedSegment == 'redeem'">
+    <div *ngIf="passbook_obj">
+      <ion-card mode="ios" *ngFor="let item of passbook_obj" >
+         <ion-row class="points-row">
+            <ion-col size="6">
+               <p class="header">Name</p>
+               <p class="value">{{item.name |titlecase}}</p>
+            </ion-col>
+            <ion-col size="6">
+              <p class="header">Mobile Number</p>
+              <p class="value">{{item.mobile_no}}</p>
+           </ion-col>
+         </ion-row>
+         <ion-row class="points-row">
+            <ion-col size="6">
+               <p class="header">Points</p>
+               <p class="value">{{item.point}}</p>
+            </ion-col>
+            <ion-col size="6">
+              <p class="header">Created Date</p>
+              <p class="value">{{item.dates |titlecase}}</p>
+           </ion-col>
+         </ion-row>
+         <ion-row class="points-row">
+          <ion-col size="6">
+             <p class="header">Status</p>
+             <p class="value capitalize">{{item.status}}</p>
+             <!-- <ion-chip color="primary" [outline]="true">
+              <ion-label color="primary">{{item.status}}</ion-label>
+            </ion-chip> -->
+          </ion-col>
+       </ion-row>
+      </ion-card>
+    </div>
+    <div *ngIf="!dataPresent" class="electrician-card">
+        <p class="ion-text-center"><b>No passbook</b> </p>
+    </div>
+  </div>
+
+</ion-content>

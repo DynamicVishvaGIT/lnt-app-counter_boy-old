@@ -1,0 +1,49 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Order History</ion-title>
+    <ion-buttons slot="start">
+      <ion-button [routerLink]="['/home']"  >
+        <ion-icon color="light" name="arrow-back-sharp"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-searchbar  placeholder="Search" animated  mode="md" clearIcon="close-circle-sharp" (ionChange)="onSearchTerm($event)"></ion-searchbar>
+  
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+<ion-card class="order-card" mode="ios" (click)="openDetails(order)" *ngFor="let order of orders">
+  <ion-row >
+    <ion-col size="8">
+      <p class="header">Gift Name</p>
+      <p class="value">{{order.gift_name}}</p>
+    </ion-col>
+    <ion-col size="4">
+      <p class="header">Gift Points</p>
+      <p class="value">{{order.points}}</p>
+    </ion-col>
+  </ion-row>
+  <ion-row >
+    <ion-col size="8">
+      <p class="header">Total Quantity</p>
+      <p class="value">{{order.quantity}}</p>
+    </ion-col>
+    <ion-col size="4">
+      <p class="header">Total Points</p>
+      <p class="value">{{order.total_points}}</p>
+    </ion-col>
+  </ion-row>
+  <hr>
+    <ion-item  lines="none"   >
+      <ion-label class="view-order" slot="start" >View Order</ion-label>
+      <ion-icon slot="start" class="arrow-icon" name="arrow-forward-outline" color="secondary" ></ion-icon>
+    </ion-item>
+
+</ion-card>
+<div *ngIf="!dataPresent" class="electrician-card">
+    <p class="ion-text-center"><b>No Orders</b> </p>
+</div>
+</ion-content>

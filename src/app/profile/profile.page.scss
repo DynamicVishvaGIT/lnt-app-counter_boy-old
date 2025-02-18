@@ -1,0 +1,121 @@
+.heading-info {
+    height: 100px;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    padding-top: 12px;
+    background: -webkit-gradient(
+      linear,
+      left top,
+      right top,
+      from(#0a4f8b),
+      to(#04659e)
+    ) !important;
+    background: linear-gradient(to right, #0a4f8b 0%, #04659e 100%) !important;
+    border-bottom-right-radius: 0;
+    position: relative;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  
+  .heading-info::after {
+    position: absolute;
+    content: "";
+    border-bottom: 100px solid #fff;
+    left: 0;
+    bottom: 0;
+    border-top: transparent;
+    // border-left: 1100px solid transparent;
+    // width: 100%;
+    // border-right: 1100px solid transparent;
+  }
+
+  .home-header-img img {
+    margin-top: 25px;
+    box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    background-color: #fff;
+    padding: 3px;
+  }
+  .home-header-info {
+    text-align: left !important;
+  }
+  .header{
+    font-size: 12px;
+    color: #202020;
+    margin-bottom: 8px;
+}
+.value{
+    font-size: 18px;
+    font-weight: bold;
+    color: #014d87;
+    margin-bottom: 23px;
+    margin-top: -5px;
+}
+.details-card{
+  margin-top: 50px;
+}
+.item-select ion-label {
+  -webkit-box-flex: initial;
+  -webkit-flex: initial;
+  -ms-flex: initial;
+  flex: initial;
+  max-width: 200px;
+}
+ion-select {
+  width: 100% !important;
+  max-width: 100%;
+  --placeholder-color: #a9a9a9;
+  --placeholder-opacity: 1;
+}
+.item-ionic-selectable ion-label {
+  -webkit-box-flex: initial;
+  -webkit-flex: initial;
+  -ms-flex: initial;
+  flex: initial;
+  max-width: 200px;
+}
+ionic-selectable {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+ion-datetime {
+  color: #000000;
+  --placeholder-color: #a9a9a9;
+  --padding-start: 0;
+}
+ion-input {
+  --placeholder-color: #a9a9a9;
+  --placeholder-opacity: 1;
+}
+.item-has-focus {
+  --highlight-background: #ffffff;
+}
+
+.profile-detail-row > ion-col {
+  color: #000000 !important;
+}
+ion-item {
+  --border: none !important;
+  --box-shadow: none !important;
+  --border-radius: 30px !important;
+  --background: #f5f5f5 !important;
+  width: 100%;
+}
+.login-btn {
+  --box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.1);
+  --padding-bottom: 25px;
+  --padding-top: 25px;
+  --padding-left: 25px;
+  --padding-right: 25px;
+  --border-radius: 30px;
+}
+.action-btn {
+  margin-right: 8px;
+}
+.ellipsis-icon{
+  margin-right: 8px;
+  font-size: 28px;
+}

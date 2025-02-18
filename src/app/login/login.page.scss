@@ -1,0 +1,91 @@
+.app-icon-container {
+    // padding-top: 150px;
+    // padding-bottom: 33px;
+    padding-top: 100px;
+    padding-bottom: 0px;
+  }
+  img{
+    width: 80%;
+  }
+  .form-row{
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  ion-content {
+    --background: #f4b404 !important;
+    // background-image: url('../../assets/imgs/login-bg.jpg');
+    text-align: center;
+  }
+  
+  ion-item {
+    
+    --border: none !important;
+    // box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.06), 0 6px 20px 0 rgb(185 185 185 / 15%);
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    width: 100%;
+    border-radius: 20px;
+
+  }
+  
+  ion-item ion-icon {
+    margin-top: 5px !important;
+    color: #0a4f8b;
+  }
+  
+  .list-md .item-block .item-inner {
+    border-bottom: none;
+  }
+  
+  ion-button {
+    // --box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.1);
+    // --box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.06), 0 6px 20px 0 rgb(185 185 185 / 15%);
+    --padding-top: 25px;
+    --padding-bottom: 25px;
+    font-size: 13px;
+    --border-radius: 20px;
+
+  }
+  
+  .center {
+    text-align: center;
+  }
+  
+  .sign-up-link {
+    font-size: 16px;
+  }
+  
+  .sign-up-link button {
+    background-color: transparent;
+    color: #111;
+    padding: 0;
+    margin: 0;
+    text-transform: capitalize;
+  }
+  
+  .item-has-focus {
+    --highlight-background: none;
+  }
+  .log-icon {
+    margin-right: 8px;
+  }
+  ion-item{
+      ion-label {
+          margin-top: 0;
+      }
+  ion-input{
+    margin-top: -5px;
+  }
+  height: 40px;
+  }
+  .login-btn{
+    --padding-bottom: 15px;
+    margin-left: 20px;
+    margin-right: 20px;
+
+  }
+  .login-label{
+    margin-bottom: 8px;
+  }
+  form {
+    margin-top: -45px;
+  }

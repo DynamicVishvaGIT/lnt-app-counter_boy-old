@@ -1,0 +1,127 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> Dashboard </ion-title>
+    <ion-buttons slot="end"><ion-button fill="outline" color="light"  (click)="doLogout()" class="logoutbtn"><ion-icon color="light" name="log-out-outline"></ion-icon>Logout</ion-button></ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-row class="heading-info">
+    <ion-col size="4" class="home-header-img" *ngIf="!img">
+      <img  src="../assets/avatar2.png" />
+    </ion-col>
+    <ion-col size="4" class="home-header-img" *ngIf="img">
+      <img  src="{{profile_picture}}" />
+    </ion-col>
+    <ion-col size="8" class="home-header-info">
+      <h2 *ngIf="userName">{{userName |titlecase}}</h2>
+      <h2 *ngIf="!userName"><ion-skeleton-text animated style="width: 85%;height: 24px;"></ion-skeleton-text></h2>
+      <p class="points" *ngIf="redeem">Redeem : <b>{{redeem}}</b></p>
+      <p  *ngIf="!redeem"><ion-skeleton-text animated style="width: 80%;"></ion-skeleton-text></p>
+
+      <p class="points" *ngIf="balance">Balance : <b>{{balance}}</b></p>
+      <p  *ngIf="!balance"><ion-skeleton-text animated style="width: 80%;"></ion-skeleton-text></p>
+
+      <p class="points" *ngIf="total">Total : <b>{{total}}</b></p>
+      <p  *ngIf="!total"><ion-skeleton-text animated style="width: 80%;"></ion-skeleton-text></p>
+
+    </ion-col>
+  </ion-row>
+<br>
+  <div id="container">
+    <ion-list class="ion-padding list">
+      <ion-row class="grid-list">
+        <!-- <ion-col size="4" class="grid-col">
+          <div class="info" (click)="openScanCode()">
+            <img src="../assets/imgs/home-icon-3.png" />
+
+            <h4 class="electrician">Scan Electrician</h4>
+            <a
+              >View Details
+              <ion-icon
+                class="right-arrow"
+                name="arrow-forward-sharp"
+              ></ion-icon
+            ></a>
+          </div>
+        </ion-col> -->
+        <ion-col size="6" class="grid-col">
+          <div class="info" (click)="openElectrician()">
+            <img src="../assets/imgs/electrician.png" />
+
+            <h4 class="list-heading">Electricians</h4>
+            <a
+              >View Details
+              <ion-icon
+                class="right-arrow"
+                name="arrow-forward-sharp"
+              ></ion-icon
+            ></a>
+          </div>
+        </ion-col>
+        <!-- <ion-col size="4" class="grid-col">
+          <div class="info" (click)="openPointsHistory()">
+            <img src="../assets/imgs/home-icon-2.png" />
+
+            <h4 class="pts-history">Points History</h4>
+            <a
+              >View Details
+              <ion-icon
+                class="right-arrow"
+                name="arrow-forward-sharp"
+              ></ion-icon
+            ></a>
+          </div>
+        </ion-col> -->
+        <ion-col size="6" class="grid-col">
+          <div class="info" (click)="openRedeem()">
+            <img src="../assets/imgs/home-icon-1.png" />
+
+            <h4 class="redeem">Gift Redeem</h4>
+            <a
+              >View Details
+              <ion-icon
+                class="right-arrow"
+                name="arrow-forward-sharp"
+              ></ion-icon
+            ></a>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="grid-list grid-row">
+
+        <ion-col size="6" class="grid-col">
+          <div class="info" (click)="openOrderHistory()">
+            <img src="../assets/imgs/cart.png" />
+
+            <h4 class="passbook">Order History</h4>
+            <a
+              >View Details
+              <ion-icon
+                class="right-arrow"
+                name="arrow-forward-sharp"
+              ></ion-icon
+            ></a>
+          </div>
+        </ion-col>
+        <ion-col size="6" class="grid-col">
+          <div class="info" (click)="openPassbook()">
+            <img src="../assets/imgs/home-icon-4.png" />
+
+            <h4 class="passbook">Passbook</h4>
+            <a
+              >View Details
+              <ion-icon
+                class="right-arrow"
+                name="arrow-forward-sharp"
+              ></ion-icon
+            ></a>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-list>
+  </div>
+</ion-content>

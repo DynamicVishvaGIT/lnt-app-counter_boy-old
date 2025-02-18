@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Mobile Number Verification</ion-title>
+    <ion-buttons slot="end"><ion-button  (click)="doLogout()" class="logoutbtn"><ion-icon name="log-out-outline"></ion-icon></ion-button></ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row>
+    <ion-col class="ion-text-center">
+      <h4>{{ mobile_no }}</h4>
+      <h6>{{ 'mobile_no_verification' | translate }}</h6>
+    </ion-col>
+  </ion-row>
+  <div class="ion-margin">
+    <form (ngSubmit)="submitOTPForm()" >
+      <ion-input  type="number" placeholder="{{ 'enter_otp' | translate }}" class="otp-input" [(ngModel)]="inputCode" name="inputCode"></ion-input>
+      <ion-button class="btn-create"   expand="block" type="submit">{{ 'verify' | translate }}</ion-button>
+    </form>
+  </div>
+
+
+<ion-card *ngIf="timer" class="card_timer no-padding">
+  <ion-card-content class="no-padding">
+    <ion-button  *ngIf="timeInSeconds && timeInSeconds > 0" size="large" expand="block" fill="clear" class="timer-button x-large">{{ 'time_left' | translate }} : {{timer.displayTime}}</ion-button>
+  </ion-card-content>
+</ion-card>
+</ion-content>
+

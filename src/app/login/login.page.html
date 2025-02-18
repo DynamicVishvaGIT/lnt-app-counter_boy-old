@@ -1,0 +1,23 @@
+
+
+<ion-content class="ion-padding login-content">
+
+  <ion-row class="app-icon-container">
+    <ion-col class="ion-text-center">
+      <img src="../../assets/logo.jpg" />      
+    </ion-col>
+  </ion-row>
+
+      <form (ngSubmit)="loginForm()">
+        <ion-row class="form-row">
+          <ion-item class="ion-margin-bottom">
+            <ion-label ><ion-icon slot="start" name="call-sharp"></ion-icon></ion-label>
+            <ion-input type="tel" maxLength="10" [(ngModel)]="loginFormField.Username"  name="username" placeholder="Enter Mobile Number"></ion-input>
+          </ion-item>
+        </ion-row>
+          <br>
+        <ion-button class="login-btn" shape="round"   strong="true" color="secondary"  expand="full" type="submit" >
+         <span class="login-label">Login</span>
+        </ion-button>
+      </form>  
+</ion-content>

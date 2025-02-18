@@ -1,0 +1,70 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Gift Redeem</ion-title>
+    <ion-buttons slot="start">
+      <ion-button [routerLink]="['/home']"  >
+        <ion-icon color="light" name="arrow-back-sharp"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-searchbar  placeholder="Search" animated  mode="md" clearIcon="close-circle-sharp" (ionChange)="onSearchTerm($event)"></ion-searchbar>
+  
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  
+  <ion-card color="warning">
+    <ion-card-header>
+      <ion-card-subtitle>Terms & Conditions</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      The Image shown in the gift redemption are representative image only actual product may vary from the image shown.
+    </ion-card-content>
+  </ion-card>
+
+  <div *ngIf="gifts">
+    <ion-card mode="ios" *ngFor="let gift of gifts; let i = index;">
+      <ion-row class="ion-margin-top  gift-row">
+      <ion-col size="3">
+        <div class="gift-div">
+          <ion-img src="{{gift.gift_image}}"></ion-img>
+          <!-- <ion-icon name="gift" color="secondary" size="large"></ion-icon> -->
+        </div>
+      </ion-col>
+      <ion-col size="9">
+        <p>Gift Name : {{gift.gift_name |titlecase}}</p>
+        <p class="points">Gift Points : {{gift.points}}</p>
+    
+      <ion-row class="qty-row">
+        <ion-col size="12" class="qty-col-1">
+          <ion-row class="ion-text-center">
+            <ion-col size="1" class="qty-col" >
+              <ion-icon  size="small"  name="remove" (click)="decrementQty(gift)" class="ion-no-padding action-icon"></ion-icon>
+            </ion-col>
+            <ion-col size="6">
+              <ion-input readonly  type="number"  [(ngModel)]="gift.qty" name="qty_{{i}}" class="qty_input"></ion-input>
+            </ion-col>
+            <ion-col size="1" class="qty-col">
+              <ion-icon size="small" name="add" (click)="incrementQty(gift)" class="ion-no-padding action-icon" ></ion-icon>
+      
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+      <p class="points"> <b>Total Points : {{ (gift.qty ? gift.qty : 0) * gift.points}}</b></p>
+      </ion-col>
+      </ion-row>
+      <br>
+      <hr>
+          <ion-button class="buy-btn" (click)="orderGift(gift)" color="secondary" expand="block">Buy</ion-button>
+    </ion-card>
+  </div>
+<br>
+<br>
+<br>
+<br>
+</ion-content>

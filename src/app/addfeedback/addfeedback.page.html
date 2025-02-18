@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add Feedback</ion-title>
+    <ion-buttons slot="start">
+      <ion-button  [routerLink]="['/feedback']"  >
+        <ion-icon color="light" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid  class="ion-margin">
+    <br>
+  <form  (ngSubmit)="feedbkForm()">
+    <ion-row>
+      <ion-item class="ion-margin-bottom">
+        <ion-label ><ion-icon name="pencil-sharp"></ion-icon></ion-label>
+        <ion-input type="text"  [(ngModel)]="feedbackForm.subject" name="subject" placeholder="Enter Subject..."></ion-input>
+      </ion-item>
+    </ion-row>
+    <ion-row>
+      <ion-item class="ion-margin-bottom">
+        <ion-label ><ion-icon name="pencil-sharp"></ion-icon></ion-label>
+        <ion-textarea name="message" [(ngModel)]="feedbackForm.message" placeholder="Enter Message..."></ion-textarea>
+      </ion-item>
+    </ion-row>
+
+    <ion-button type="submit" class="login-btn" color="secondary"  expand="block">
+      <ion-icon name="send" style="margin-right: 8px;"></ion-icon> {{ 'submit' | translate }}
+    </ion-button>
+  </form>
+  </ion-grid>
+  
+</ion-content>

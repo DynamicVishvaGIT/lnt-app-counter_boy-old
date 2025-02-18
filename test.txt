@@ -1,0 +1,4 @@
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore counterboy_app.keystore app-release-unsigned.apk counterboy
+
+
+zipalign -v 4 app-release-unsigned.apk counterboy-0.0.1.apk

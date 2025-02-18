@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add Electrician</ion-title>
+    <ion-buttons slot="start">
+      <ion-button  [routerLink]="['/home']"  >
+        <ion-icon color="light" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-margin">
+  <form *ngIf="electricianFormField" (ngSubmit)="ElectricianForm()" >
+    <ion-row>
+      <ion-item class="ion-margin-bottom">
+        <ion-label ><ion-icon slot="start" name="person"></ion-icon></ion-label>
+        <ion-input type="text" [(ngModel)]="electricianFormField.first_name" name="first_name" placeholder="{{ 'enter_first_name' | translate }}"></ion-input>
+      </ion-item>
+    </ion-row>
+
+    <ion-row>
+      <ion-item class="ion-margin-bottom">
+        <ion-label ><ion-icon slot="start" name="person"></ion-icon></ion-label>
+        <ion-input type="text" [(ngModel)]="electricianFormField.last_name" name="last_name" placeholder="{{ 'enter_last_name' | translate }}"></ion-input>
+      </ion-item>
+    </ion-row>
+    <ion-row>
+      <ion-item class="ion-margin-bottom">
+        <ion-label ><ion-icon slot="start" name="call"></ion-icon></ion-label>
+        <ion-input type="tel" maxLength="10" [(ngModel)]="electricianFormField.username" name="username" placeholder="{{ 'enter_mobile_no' | translate }}"></ion-input>
+      </ion-item>
+    </ion-row>
+
+    <ion-row>
+      <ion-item class="ion-margin-bottom">
+        <ion-label ><ion-icon name="list"></ion-icon></ion-label>
+          <ionic-selectable
+              name="state"
+              
+              placeholder="{{ 'select_state' | translate }}"
+              searchPlaceholder="{{ 'search_state' | translate }}"
+              [(ngModel)]="electricianFormField.state"
+              [items]="states"
+              itemValueField="id"
+              itemTextField="name"
+              [canSearch]="true"
+              (onChange)="changeState($event)">
+          </ionic-selectable>
+      </ion-item>
+    </ion-row>
+    <ion-row>
+      <ion-item class="ion-margin-bottom">
+        <ion-label ><ion-icon name="list"></ion-icon></ion-label>
+          <ionic-selectable
+              #cityComponent
+              name="city"
+              placeholder="{{ 'select_city' | translate }}"
+              searchPlaceholder="{{ 'search_city' | translate }}"
+              [(ngModel)]="electricianFormField.city"
+              [items]="cities"
+              itemValueField="id"
+              itemTextField="name"
+              [canSearch]="true"
+             
+              >
+          </ionic-selectable>
+      </ion-item>
+    </ion-row>
+    <ion-row>
+      <ion-item class="ion-margin-bottom">
+        <ion-label ><ion-icon name="location-outline"></ion-icon></ion-label>
+
+        <ion-input type="tel" maxLength="6" [(ngModel)]="electricianFormField.pincode" name="pincode" placeholder="{{ 'enter_pincode' | translate }}"></ion-input>
+      </ion-item>
+    </ion-row>
+
+ 
+    <ion-button type="submit" class="login-btn" color="secondary" expand="block">
+      <ion-icon name="send" style="margin-right: 8px;"></ion-icon> {{ 'submit' | translate }}
+    </ion-button>
+</form>
+</div>
+</ion-content>

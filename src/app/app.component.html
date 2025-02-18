@@ -1,0 +1,35 @@
+<ion-app>
+  <ion-router-outlet></ion-router-outlet>
+  <ion-tabs  (ionTabsDidChange)="getSelectedTab()" #myTabs class="tabbar" >
+    <!-- <ion-fab vertical="bottom"  horizontal="center" translucent="true">
+      <ion-fab-button (click)="goToPictures()">
+        <ion-icon color="light" name="add-sharp"></ion-icon>
+      </ion-fab-button>
+    </ion-fab> -->
+    <ion-tab-bar selectedTab="{{tab_name}}"  *ngIf="tab_name ==='home' || tab_name ==='profile'|| tab_name ==='redeem'|| tab_name ==='scancode'" slot="bottom" >
+
+      <ion-tab-button  tab="home" >
+        <ion-icon name="home" size="small" ></ion-icon>
+        <ion-label >Dashboard</ion-label>
+      </ion-tab-button> 
+      <ion-tab-button  tab="feedback" class="comments">
+        <ion-icon name="reader" size="small" ></ion-icon>
+        <ion-label >Feedback</ion-label>
+      </ion-tab-button> 
+      <ion-tab-button  tab="redeem" class="comments">
+        <ion-icon name="gift" size="small" ></ion-icon>
+        <ion-label >Gift Redeem</ion-label>
+      </ion-tab-button> 
+      <!-- <svg height="50" viewBox="0 0 100 50" width="100" xmlns="http://www.w3.org/2000/svg"><path d="M100 0v50H0V0c.543 27.153 22.72 49 50 49S99.457 27.153 99.99 0h.01z" fill="red" fill-rule="evenodd"></path></svg> -->
+<!--   
+      <ion-tab-button  tab="scancode" class="notifs">
+        <ion-icon name="barcode-outline" size="small" ></ion-icon>
+        <ion-label >Scan Electrician</ion-label>
+      </ion-tab-button> -->
+      <ion-tab-button  tab="profile" >
+        <ion-icon name="person" size="small" ></ion-icon>
+        <ion-label >Profile</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-app>

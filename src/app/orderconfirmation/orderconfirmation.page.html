@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ 'order_confirmation' | translate }}</ion-title>
+    <ion-buttons slot="end">
+    	<ion-button  (click)="close_popup()"><ion-icon slot="start" color="light" name="close-circle"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-content>
+      <ion-card-title>
+    {{ 'order_details' | translate }}
+  </ion-card-title>
+  <ion-row>
+    <ion-col size="4"  >{{ 'product_name' | translate }}</ion-col>
+    <ion-col size="8"  >{{ gift.gift_name }}</ion-col>
+    
+    <ion-col size="4" >{{ 'qty' | translate }}</ion-col>
+    <ion-col size="8" >{{ gift.qty }}</ion-col>
+  </ion-row>
+  
+</ion-card-content>
+</ion-card>
+<form (ngSubmit)="submitOTPForm()" >
+  <ion-item class="otp-input-main">
+    <ion-input type="number" placeholder="{{ 'enter_otp' | translate }}" class="otp-input" [(ngModel)]="inputCode" name="inputCode"></ion-input>
+  </ion-item>
+  <ion-button class="btn-create" type="submit"  expand="full" type="submit">{{ 'verify' | translate }}</ion-button>
+</form>
+
+
+</ion-content>

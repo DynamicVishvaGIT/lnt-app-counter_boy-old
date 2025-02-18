@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Electrician details</ion-title>
+    <ion-buttons slot="start">
+      <ion-button  [routerLink]="['/electricians']"  >
+        <ion-icon color="light" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-card mode="ios">
+    <ion-card-content>
+  <ion-row *ngIf="electrician">
+    <ion-col size="6" >Name  </ion-col>
+    <ion-col size="6" class="value" >: {{ electrician.first_name |titlecase }} {{electrician.last_name |titlecase  }} </ion-col>
+
+    <ion-col size="6" >Mobile Number  </ion-col>
+    <ion-col size="6" class="value" >: {{ electrician.username || 'N/A' }} </ion-col>
+
+    <ion-col size="6" >Address line 1  </ion-col>
+    <ion-col size="6" class="value" >: {{ electrician.address_line_1 || 'N/A' }} </ion-col>
+
+    <ion-col size="6" >Address line 2  </ion-col>
+    <ion-col size="6" class="value" >: {{ electrician.address_line_2 || 'N/A'}} </ion-col>
+
+    <ion-col size="6" >Address line 3  </ion-col>
+    <ion-col size="6" class="value" >: {{ electrician.address_line_3|| 'N/A' }} </ion-col>
+
+    <ion-col size="6" >Pincode  </ion-col>
+    <ion-col size="6" class="value" >: {{ electrician.pincode || 'N/A' }} </ion-col>
+
+    <ion-col size="6" >City  </ion-col>
+    <ion-col size="6" class="value" >: {{ electrician.city }} </ion-col>
+    
+    <ion-col size="6" >State  </ion-col>
+    <ion-col size="6" class="value" >: {{ electrician.state }} </ion-col>
+
+    <ion-col size="6" >Balance </ion-col>
+    <ion-col size="6" class="points" >: {{ electrician.user_balance }} </ion-col>
+
+    <ion-col size="6" >Redeem Balance  </ion-col>
+    <ion-col size="6" class="points" >: {{ electrician.user_redeem_balance }} </ion-col>
+
+    <ion-col size="6" >Total Balance  </ion-col>
+    <ion-col size="6" class="points" >: {{ electrician.user_total_balance }} </ion-col>
+ 
+  </ion-row>
+</ion-card-content>
+</ion-card>
+</ion-content>

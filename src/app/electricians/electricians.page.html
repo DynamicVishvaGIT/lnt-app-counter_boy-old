@@ -1,0 +1,125 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Electricians List</ion-title>
+    <ion-buttons slot="start">
+      <ion-button  [routerLink]="['/home']"  >
+        <ion-icon color="light" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button size="small" (click)="openElectricianForm()" fill="outline" color="light">
+      Add electrician
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+  <ion-searchbar  placeholder="Search" animated  mode="md" clearIcon="close-circle-sharp" (ionChange)="onSearchTerm($event)"></ion-searchbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div *ngIf="electricians">
+  <!-- <ion-card *ngFor="let electrician of electricians" -->
+    <!-- [routerLink]="['/electriciandetails',electrician.id]"  -->
+    <!-- mode="ios"> -->
+    <!-- <div class="bill-div">
+
+      <ion-row>
+        <ion-col size="6">
+          <p class="header">Electrician Name</p>
+          <p class="header-2"><ion-icon name="person-outline"></ion-icon> {{electrician.electricianFullName |titlecase}}</p>
+        </ion-col>
+        <ion-col size="6">
+          <p class="header">Mobile Number</p>
+          <p class="header-2"><ion-icon name="call-outline"></ion-icon>{{electrician.username || 'N/A'}}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <p class="header">State</p>
+          <p class="header-2"><ion-icon name="location-outline"></ion-icon>{{electrician.state || 'N/A'}}</p>
+        </ion-col>
+        <ion-col size="6">
+          <p class="header">City</p>
+          <p class="header-2"><ion-icon name="location-outline"></ion-icon>{{electrician.city || 'N/A'}}</p>
+        </ion-col>
+      </ion-row>
+    </div> -->
+  <!-- </ion-card> -->
+ <ion-card *ngFor="let electrician of electricians"
+
+ mode="ios">
+  <ion-row class="ion-margin-top">
+    <ion-col size="6">
+      <ion-row>
+        <ion-col size="3" class="icon-col">
+          <ion-icon class="list-icon" name="person-outline" ></ion-icon>
+        </ion-col>
+        <ion-col size="9">
+          <ion-list >
+            <ion-label class="label-heading"> Electrician Name </ion-label>
+            <br>
+            <ion-label class="label-value" >{{electrician.electricianFullName |titlecase}}</ion-label>
+           
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    
+    </ion-col>
+    <ion-col size="6">
+      <ion-row>
+        <ion-col size="3" class="icon-col">
+          <ion-icon  class="list-icon" name="call-outline" ></ion-icon>
+        </ion-col>
+        <ion-col size="9">
+          <ion-list >
+            <ion-label class="label-heading">Mobile Number </ion-label>
+            <br>
+            <ion-label class="label-value">{{electrician.username || 'N/A'}}</ion-label>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+     
+    </ion-col>
+    </ion-row>
+    <ion-row class="ion-margin-bottom">
+      <ion-col size="6">
+      <ion-row>
+        <ion-col size="3" class="icon-col">
+          <ion-icon  class="list-icon" name="location-outline" ></ion-icon>
+        </ion-col>
+        <ion-col size="9">
+          <ion-list >
+            <ion-label class="label-heading"> State </ion-label>
+            <br>
+            <ion-label class="label-value">{{electrician.state || 'N/A'}}</ion-label>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      </ion-col>
+      <ion-col size="6">
+        <ion-row>
+          <ion-col size="3" class="icon-col">
+            <ion-icon  class="list-icon" name="location-outline" ></ion-icon>
+          </ion-col>
+          <ion-col size="9">
+            <ion-list >
+              <ion-label class="label-heading"> City </ion-label>
+              <br>
+              <ion-label class="label-value">{{electrician.city || 'N/A'}}</ion-label>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+       
+      </ion-col>
+    </ion-row>
+ </ion-card>
+</div>
+<div *ngIf="!dataPresent" class="electrician-card">
+  <!-- <ion-card class="no-items"> -->
+    <p class="ion-text-center"><b>No electricians</b> </p>
+  <!-- </ion-card> -->
+</div>
+</ion-content>

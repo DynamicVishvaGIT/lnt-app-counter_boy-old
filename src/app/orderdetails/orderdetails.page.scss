@@ -1,0 +1,30 @@
+.header{
+    font-size: 15px;
+    color: #202020;
+    margin-bottom: 1px;
+}
+.value{
+    font-size: 18px;
+    font-weight: bold;
+    color: #014d87;
+    margin-bottom: 9px;
+    margin-top: 0;
+}
+.value2{
+    font-size: 18px;
+    font-weight: bold;
+    // color: #014d87;
+    margin-bottom: 9px;
+    margin-top: 0;
+}
+hr{
+    background: #014d87;
+    opacity: 0.5;
+}
+.order-card{
+    margin: 20px;
+    box-shadow: none;
+}
+.capitalize { 
+    text-transform: capitalize; 
+}

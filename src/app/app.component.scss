@@ -1,0 +1,91 @@
+
+
+ion-tab-bar {
+    --border: 0;
+        --background: transparent;
+        position: absolute;
+        bottom: 0;
+        left:0; right: 0;
+        width: 100%;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+        &:after{
+            content: " ";
+            width: 100%;
+            bottom: 0;
+            background: var(--ion-color-light);
+            height: env(safe-area-inset-bottom);
+            position: absolute;
+        }
+  
+  }
+  ion-tab-button {
+    --background: var(--ion-color-light);
+    --color: #8e8e8ea6;
+    --ripple-color: #014d87;
+    
+  }
+  .tab-selected {
+    --color-selected: #014d87;
+
+    font-weight: bold;
+    // background: #677483;
+    
+  }
+  ion-tab-button > ion-icon {
+    font-size: 18px;
+  }
+  ion-tabs{
+    background: #121212;
+}
+
+
+
+  // ion-tabs{
+  //   ion-fab {
+  //     margin-bottom: env(safe-area-inset-bottom); 
+  //     left: 51% !important;
+  //     ion-fab-button {
+  //       --box-shadow: none;
+  //       width: 50px;
+  //       height: 50px;
+    
+  //     }
+  //   }
+  //   ion-tab-bar {
+  //     --border: 0;
+  //     --background: transparent;
+  //     position: absolute;
+  //     bottom: 0;
+  //     left:0; right: 0;
+  //     width: 100%;
+  //     &:after{
+  //       content: " ";
+  //       width: 100%;
+  //       bottom: 0;
+  //       background: var(--ion-color-light);
+  //       height: env(safe-area-inset-bottom);
+  //       position: absolute;
+  //     }
+  //     ion-tab-button {
+  //       --background: var(--ion-color-light);
+  //     }
+  //     ion-tab-button.comments {
+  //       margin-right: 0px;
+  //       border-top-right-radius: 18px;
+  //     }
+  //     ion-tab-button.notifs {
+  //       margin-left: 0px;
+  //       border-top-left-radius: 18px;
+  //     }
+  //     svg {    
+  //       width: 72px;
+  //       margin-top: 19px;
+  //       path{
+  //         fill:  var(--ion-color-light);
+  //       }		
+  //     }
+  //   }
+  // }
+  .active {
+    border: 1px solid #ffffff;
+  }

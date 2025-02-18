@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Scan Counter Boy</ion-title>
+    <ion-buttons slot="end" >
+      <ion-icon name="close-circle-outline" color="light" (click)="dissmiss()"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-text-center">
+    <ngx-qrcode  [value]="QRvalue">
+    </ngx-qrcode>
+  </div>
+</ion-content>

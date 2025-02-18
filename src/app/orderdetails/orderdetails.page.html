@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Order History Details</ion-title>
+    <ion-buttons slot="start">
+      <ion-button [routerLink]="['/orders']"  >
+        <ion-icon color="light" name="arrow-back-sharp"></ion-icon>
+        
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="order_data">
+  <ion-card class="ion-padding order-card" mode="ios">
+    <ion-row >
+      <ion-col size="8">
+        <p class="header">Gift Name</p>
+        <p class="value">{{order_data.gift_name}}</p>
+      </ion-col>
+      <ion-col size="4">
+        <p class="header">Gift Points</p>
+        <p class="value">{{order_data.points}}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row >
+      <ion-col size="8">
+        <p class="header">Total Quantity</p>
+        <p class="value">{{order_data.quantity}}</p>
+      </ion-col>
+      <ion-col size="4">
+        <p class="header">Total Points</p>
+        <p class="value">{{order_data.total_points}}</p>
+      </ion-col>
+    </ion-row>
+    <hr>
+    <ion-row >
+      <ion-col size="12">
+        <p class="header">Request Received</p>
+        <ion-label class="value2" color="success" *ngIf="order_data.request_received == 'yes'">{{order_data.request_received |titlecase}}</ion-label>
+        <ion-label class="value2" color="danger" *ngIf="order_data.request_received == 'no'">{{order_data.request_received |titlecase}}</ion-label>
+
+      </ion-col>
+      <ion-col size="12">
+        <p class="header">Request Registered</p>
+        <ion-label class="value2" color="success" *ngIf="order_data.request_registered == 'yes'">{{order_data.request_registered |titlecase}}</ion-label>
+        <ion-label class="value2" color="danger" *ngIf="order_data.request_registered == 'no'">{{order_data.request_registered |titlecase}}</ion-label>
+      </ion-col>
+      <ion-col size="12">
+        <p class="header">Request Approved</p>
+        <ion-label class="value2" color="success" *ngIf="order_data.request_approved == 'yes'">{{order_data.request_approved |titlecase}}</ion-label>
+        <ion-label class="value2" color="danger" *ngIf="order_data.request_approved == 'no'">{{order_data.request_approved |titlecase}}</ion-label>
+      </ion-col>
+    </ion-row>
+    <hr>
+    <ion-row >
+      <ion-col size="12">
+        <p class="header">Gift  Procured</p>
+        <p class="value">{{order_data.gift_procured|titlecase}}</p>
+      </ion-col>
+      <ion-col size="12">
+        <p class="header">Gift Dispatched</p>
+        <p class="value">{{order_data.gift_dispatched|titlecase}}</p>
+      </ion-col>
+      <ion-col size="">
+       
+      </ion-col>
+    </ion-row>
+    <hr>
+
+    <ion-row >
+      <ion-col size="6">
+        <p class="header">Courier ID</p>
+        <p class="value">{{order_data.courier_id || 'N/A'}}</p>
+      </ion-col>
+      <ion-col size="6">
+        <p class="header">Dispatched Remark</p>
+        <p class="value capitalize">{{order_data.dispatched_remark || 'N/A'}}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row >
+      <ion-col size="6">
+        <p class="header">Dispatched Date</p>
+        <p class="value">{{order_data.dispatched_date || 'N/A'}}</p>
+      </ion-col>
+      <ion-col size="6">
+        <p class="header">Requested Date</p>
+        <p class="value">{{order_data.created_at || 'N/A'}}</p>
+      </ion-col>
+    </ion-row>
+    </ion-card>
+  </div>
+</ion-content>
